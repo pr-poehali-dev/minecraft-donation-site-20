@@ -1,0 +1,36 @@
+{
+  "tests": [
+    {
+      "name": "Test missing required fields",
+      "method": "POST",
+      "body": {
+        "nickname": "TestPlayer"
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test valid privilege grant request",
+      "method": "POST",
+      "body": {
+        "payment_id": "test_payment_123",
+        "nickname": "TestPlayer",
+        "privilege": "KNIGHT",
+        "price": "79₽"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": "boolean"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "expectedStatus": 200
+    }
+  ]
+}

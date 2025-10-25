@@ -8,29 +8,17 @@ function Index() {
   const [activeTab, setActiveTab] = useState('home');
 
   const handleBuyClick = async (privilege: {name: string, price: string}) => {
-    const nickname = prompt('Введите ваш игровой ник для уведомления в чате:');
+    const nickname = prompt('Введите ваш игровой ник:');
     
     if (!nickname) {
       alert('Необходимо указать ник!');
       return;
     }
     
-    try {
-      await fetch('https://functions.poehali.dev/212ddf7e-ce37-478f-8bf4-a6a0ed1f38cb', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          nickname: nickname,
-          privilege: privilege.name
-        })
-      });
-    } catch (error) {
-      console.error('Failed to send notification:', error);
-    }
+    const paymentId = `pay_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     
-    const paymentUrl = `https://pay.example.com/checkout?item=${encodeURIComponent(privilege.name)}&price=${encodeURIComponent(privilege.price)}&nickname=${encodeURIComponent(nickname)}`;
+    const paymentUrl = `https://pay.example.com/checkout?payment_id=${encodeURIComponent(paymentId)}&item=${encodeURIComponent(privilege.name)}&price=${encodeURIComponent(privilege.price)}&nickname=${encodeURIComponent(nickname)}&callback_url=${encodeURIComponent('https://functions.poehali.dev/864c0939-bade-4ed4-961d-cf489492d292')}`;
+    
     window.location.href = paymentUrl;
   };
 

@@ -1,3 +1,4 @@
 {
+  "grant-privilege": "https://functions.poehali.dev/864c0939-bade-4ed4-961d-cf489492d292",
   "notify-purchase": "https://functions.poehali.dev/212ddf7e-ce37-478f-8bf4-a6a0ed1f38cb"
 }
