@@ -311,43 +311,49 @@ function Index() {
             <div className="grid md:grid-cols-3 gap-6">
               <Card className="hover:border-primary transition-all hover:scale-105">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
+                  <div className="mx-auto mb-4 relative group">
+                    <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all"></div>
                     <img 
-                      src="https://minotar.net/helm/sendeu/100.png" 
+                      src="https://mc-heads.net/avatar/sendeu/100" 
                       alt="sendeu"
-                      className="w-24 h-24 rounded-lg border-2 border-primary"
+                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated"
+                      style={{ imageRendering: 'pixelated' }}
                     />
                   </div>
                   <CardTitle className="text-2xl font-heading">sendeu</CardTitle>
+                  <CardDescription>Администратор</CardDescription>
+                </CardHeader>
+              </Card>
+              
+              <Card className="hover:border-primary transition-all hover:scale-105">
+                <CardHeader className="text-center">
+                  <div className="mx-auto mb-4 relative group">
+                    <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all"></div>
+                    <img 
+                      src="https://mc-heads.net/avatar/fleymich/100" 
+                      alt="fleymich"
+                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated"
+                      style={{ imageRendering: 'pixelated' }}
+                    />
+                  </div>
+                  <CardTitle className="text-2xl font-heading">fleymich</CardTitle>
                   <CardDescription>Основатель сервера</CardDescription>
                 </CardHeader>
               </Card>
               
               <Card className="hover:border-primary transition-all hover:scale-105">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
+                  <div className="mx-auto mb-4 relative group">
+                    <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all"></div>
                     <img 
-                      src="https://minotar.net/helm/fleymich/100.png" 
-                      alt="fleymich"
-                      className="w-24 h-24 rounded-lg border-2 border-primary"
-                    />
-                  </div>
-                  <CardTitle className="text-2xl font-heading">fleymich</CardTitle>
-                  <CardDescription>Главный администратор</CardDescription>
-                </CardHeader>
-              </Card>
-              
-              <Card className="hover:border-primary transition-all hover:scale-105">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4">
-                    <img 
-                      src="https://minotar.net/helm/deffix1488/100.png" 
+                      src="https://mc-heads.net/avatar/deffix1488/100" 
                       alt="deffix1488"
-                      className="w-24 h-24 rounded-lg border-2 border-primary"
+                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated"
+                      style={{ imageRendering: 'pixelated' }}
                     />
                   </div>
                   <CardTitle className="text-2xl font-heading">deffix1488</CardTitle>
-                  <CardDescription>Технический администратор</CardDescription>
+                  <CardDescription>Строитель</CardDescription>
                 </CardHeader>
               </Card>
             </div>
