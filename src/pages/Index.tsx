@@ -6,8 +6,10 @@ import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
 
 function Index() {
+  const { toast } = useToast();
   const [activeTab, setActiveTab] = useState('home');
   const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false);
   const [selectedPrivilege, setSelectedPrivilege] = useState<{name: string, price: string} | null>(null);
@@ -23,6 +25,12 @@ function Index() {
     console.log('Order:', { privilege: selectedPrivilege, ...orderForm });
     setIsOrderDialogOpen(false);
     setOrderForm({ nickname: '', email: '' });
+    
+    toast({
+      title: "Удачной игры! 🎮",
+      description: `Привилегия ${selectedPrivilege?.name} успешно активирована для игрока ${orderForm.nickname}`,
+      duration: 5000,
+    });
   };
 
   const privileges = [
