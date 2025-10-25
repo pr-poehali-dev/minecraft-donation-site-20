@@ -9,9 +9,9 @@ function Index() {
 
   const privileges = [
     {
-      name: 'VIP',
-      price: '199₽',
-      color: 'text-yellow-400',
+      name: 'KNIGHT',
+      price: '79₽',
+      color: 'text-slate-400',
       features: [
         'Цветной ник',
         'Приватный варп',
@@ -21,11 +21,11 @@ function Index() {
       ]
     },
     {
-      name: 'PREMIUM',
-      price: '399₽',
-      color: 'text-cyan-400',
+      name: 'PRINCE',
+      price: '149₽',
+      color: 'text-purple-400',
       features: [
-        'Всё из VIP',
+        'Всё из KNIGHT',
         'Уникальный префикс',
         'Кит каждые 6 часов',
         '10 точек дома',
@@ -36,10 +36,10 @@ function Index() {
     },
     {
       name: 'LEGEND',
-      price: '699₽',
+      price: '219₽',
       color: 'text-primary',
       features: [
-        'Всё из PREMIUM',
+        'Всё из PRINCE',
         'Эксклюзивный префикс',
         'Кит каждые 3 часа',
         '20 точек дома',
