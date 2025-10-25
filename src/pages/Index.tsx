@@ -15,7 +15,10 @@ function Index() {
       return;
     }
     
-    alert(`Привилегия ${privilege.name} для игрока ${nickname}.\nСвяжитесь с администрацией для оплаты.`);
+    const message = `Привет! Хочу купить привилегию ${privilege.name} (${privilege.price}) для ника: ${nickname}`;
+    const telegramUrl = `https://t.me/cloyru_bot?start=${encodeURIComponent(message)}`;
+    
+    window.open(telegramUrl, '_blank');
   };
 
   const privileges = [
