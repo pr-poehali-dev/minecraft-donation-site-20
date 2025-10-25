@@ -136,6 +136,12 @@ function Index() {
               >
                 Новости
               </button>
+              <button 
+                onClick={() => setActiveTab('team')}
+                className={`hover:text-primary transition-colors ${activeTab === 'team' ? 'text-primary' : 'text-muted-foreground'}`}
+              >
+                Команда
+              </button>
             </div>
           </div>
         </div>
@@ -291,6 +297,59 @@ function Index() {
                   </CardHeader>
                 </Card>
               ))}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'team' && (
+          <div className="space-y-8 max-w-6xl mx-auto">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-5xl font-heading font-black">НАША КОМАНДА</h2>
+              <p className="text-muted-foreground mt-2">Администраторы сервера</p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="hover:border-primary transition-all hover:scale-105">
+                <CardHeader className="text-center">
+                  <div className="mx-auto mb-4">
+                    <img 
+                      src="https://minotar.net/helm/sendeu/100.png" 
+                      alt="sendeu"
+                      className="w-24 h-24 rounded-lg border-2 border-primary"
+                    />
+                  </div>
+                  <CardTitle className="text-2xl font-heading">sendeu</CardTitle>
+                  <CardDescription>Основатель сервера</CardDescription>
+                </CardHeader>
+              </Card>
+              
+              <Card className="hover:border-primary transition-all hover:scale-105">
+                <CardHeader className="text-center">
+                  <div className="mx-auto mb-4">
+                    <img 
+                      src="https://minotar.net/helm/fleymich/100.png" 
+                      alt="fleymich"
+                      className="w-24 h-24 rounded-lg border-2 border-primary"
+                    />
+                  </div>
+                  <CardTitle className="text-2xl font-heading">fleymich</CardTitle>
+                  <CardDescription>Главный администратор</CardDescription>
+                </CardHeader>
+              </Card>
+              
+              <Card className="hover:border-primary transition-all hover:scale-105">
+                <CardHeader className="text-center">
+                  <div className="mx-auto mb-4">
+                    <img 
+                      src="https://minotar.net/helm/deffix1488/100.png" 
+                      alt="deffix1488"
+                      className="w-24 h-24 rounded-lg border-2 border-primary"
+                    />
+                  </div>
+                  <CardTitle className="text-2xl font-heading">deffix1488</CardTitle>
+                  <CardDescription>Технический администратор</CardDescription>
+                </CardHeader>
+              </Card>
             </div>
           </div>
         )}
