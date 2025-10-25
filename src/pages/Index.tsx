@@ -12,6 +12,7 @@ function Index() {
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState('home');
   const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false);
+  const [isSuccessDialogOpen, setIsSuccessDialogOpen] = useState(false);
   const [selectedPrivilege, setSelectedPrivilege] = useState<{name: string, price: string} | null>(null);
   const [orderForm, setOrderForm] = useState({ nickname: '', email: '' });
 
@@ -25,12 +26,7 @@ function Index() {
     console.log('Order:', { privilege: selectedPrivilege, ...orderForm });
     setIsOrderDialogOpen(false);
     setOrderForm({ nickname: '', email: '' });
-    
-    toast({
-      title: "Удачной игры! 🎮",
-      description: `Привилегия ${selectedPrivilege?.name} успешно активирована для игрока ${orderForm.nickname}`,
-      duration: 5000,
-    });
+    setIsSuccessDialogOpen(true);
   };
 
   const privileges = [
@@ -365,6 +361,31 @@ function Index() {
               </Button>
             </DialogFooter>
           </form>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isSuccessDialogOpen} onOpenChange={setIsSuccessDialogOpen}>
+        <DialogContent className="sm:max-w-lg text-center">
+          <div className="flex flex-col items-center justify-center py-8 space-y-6">
+            <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
+              <Icon name="Check" className="text-primary" size={48} />
+            </div>
+            <div className="space-y-2">
+              <DialogTitle className="text-4xl font-heading font-black">
+                Удачной игры!
+              </DialogTitle>
+              <DialogDescription className="text-xl">
+                Спасибо за поддержку
+              </DialogDescription>
+            </div>
+            <Button 
+              size="lg" 
+              onClick={() => setIsSuccessDialogOpen(false)}
+              className="mt-4"
+            >
+              Закрыть
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
 
