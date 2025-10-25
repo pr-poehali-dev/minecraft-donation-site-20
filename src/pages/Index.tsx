@@ -23,7 +23,7 @@ function Index() {
     {
       name: 'PRINCE',
       price: '149₽',
-      color: 'text-purple-400',
+      color: 'text-cyan-400',
       features: [
         'Всё из KNIGHT',
         'Уникальный префикс',
@@ -37,7 +37,7 @@ function Index() {
     {
       name: 'LEGEND',
       price: '219₽',
-      color: 'text-primary',
+      color: 'text-yellow-400',
       features: [
         'Всё из PRINCE',
         'Эксклюзивный префикс',
