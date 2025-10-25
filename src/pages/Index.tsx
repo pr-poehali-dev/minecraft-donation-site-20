@@ -3,9 +3,27 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 function Index() {
   const [activeTab, setActiveTab] = useState('home');
+  const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false);
+  const [selectedPrivilege, setSelectedPrivilege] = useState<{name: string, price: string} | null>(null);
+  const [orderForm, setOrderForm] = useState({ nickname: '', email: '' });
+
+  const handleBuyClick = (privilege: {name: string, price: string}) => {
+    setSelectedPrivilege(privilege);
+    setIsOrderDialogOpen(true);
+  };
+
+  const handleOrderSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Order:', { privilege: selectedPrivilege, ...orderForm });
+    setIsOrderDialogOpen(false);
+    setOrderForm({ nickname: '', email: '' });
+  };
 
   const privileges = [
     {
@@ -231,7 +249,11 @@ function Index() {
                     </ul>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full" size="lg">
+                    <Button 
+                      className="w-full" 
+                      size="lg"
+                      onClick={() => handleBuyClick({ name: privilege.name, price: privilege.price })}
+                    >
                       Купить
                     </Button>
                   </CardFooter>
@@ -293,6 +315,50 @@ function Index() {
           </div>
         )}
       </main>
+
+      <Dialog open={isOrderDialogOpen} onOpenChange={setIsOrderDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Оформление заказа</DialogTitle>
+            <DialogDescription>
+              Привилегия: <span className="font-bold text-foreground">{selectedPrivilege?.name}</span> — {selectedPrivilege?.price}
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleOrderSubmit}>
+            <div className="space-y-4 py-4">
+              <div className="space-y-2">
+                <Label htmlFor="nickname">Игровой ник</Label>
+                <Input
+                  id="nickname"
+                  placeholder="Введите ваш ник в игре"
+                  value={orderForm.nickname}
+                  onChange={(e) => setOrderForm({ ...orderForm, nickname: e.target.value })}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email">Электронная почта</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="example@mail.com"
+                  value={orderForm.email}
+                  onChange={(e) => setOrderForm({ ...orderForm, email: e.target.value })}
+                  required
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button type="button" variant="outline" onClick={() => setIsOrderDialogOpen(false)}>
+                Отмена
+              </Button>
+              <Button type="submit">
+                Перейти к оплате
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <footer className="border-t border-border mt-16 py-8">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
