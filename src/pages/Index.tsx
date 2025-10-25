@@ -7,8 +7,30 @@ import { Badge } from '@/components/ui/badge';
 function Index() {
   const [activeTab, setActiveTab] = useState('home');
 
-  const handleBuyClick = (privilege: {name: string, price: string}) => {
-    const paymentUrl = `https://pay.example.com/checkout?item=${encodeURIComponent(privilege.name)}&price=${encodeURIComponent(privilege.price)}`;
+  const handleBuyClick = async (privilege: {name: string, price: string}) => {
+    const nickname = prompt('Введите ваш игровой ник для уведомления в чате:');
+    
+    if (!nickname) {
+      alert('Необходимо указать ник!');
+      return;
+    }
+    
+    try {
+      await fetch('https://functions.poehali.dev/212ddf7e-ce37-478f-8bf4-a6a0ed1f38cb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nickname: nickname,
+          privilege: privilege.name
+        })
+      });
+    } catch (error) {
+      console.error('Failed to send notification:', error);
+    }
+    
+    const paymentUrl = `https://pay.example.com/checkout?item=${encodeURIComponent(privilege.name)}&price=${encodeURIComponent(privilege.price)}&nickname=${encodeURIComponent(nickname)}`;
     window.location.href = paymentUrl;
   };
 

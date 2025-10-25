@@ -1,0 +1,36 @@
+{
+  "tests": [
+    {
+      "name": "Test OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedHeaders": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "name": "Test purchase notification",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "nickname": "testplayer",
+        "privilege": "KNIGHT"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "message": "string",
+        "nickname": "testplayer",
+        "privilege": "KNIGHT"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test GET method not allowed",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 405
+    }
+  ]
+}
