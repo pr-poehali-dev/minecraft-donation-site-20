@@ -141,7 +141,7 @@ function Index() {
                   <Icon name="Server" className="text-primary" size={24} />
                   <div className="text-left">
                     <p className="text-sm text-muted-foreground">IP сервера</p>
-                    <p className="text-xl font-bold">play.craftmine.ru</p>
+                    <p className="text-xl font-bold">tcp.cloudpub.ru:47378</p>
                   </div>
                 </div>
               </div>
