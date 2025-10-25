@@ -15,11 +15,7 @@ function Index() {
       return;
     }
     
-    const paymentId = `pay_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    
-    const paymentUrl = `https://pay.example.com/checkout?payment_id=${encodeURIComponent(paymentId)}&item=${encodeURIComponent(privilege.name)}&price=${encodeURIComponent(privilege.price)}&nickname=${encodeURIComponent(nickname)}&callback_url=${encodeURIComponent('https://functions.poehali.dev/864c0939-bade-4ed4-961d-cf489492d292')}`;
-    
-    window.location.href = paymentUrl;
+    alert(`Привилегия ${privilege.name} для игрока ${nickname}.\nСвяжитесь с администрацией для оплаты.`);
   };
 
   const privileges = [
