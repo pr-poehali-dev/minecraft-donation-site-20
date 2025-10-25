@@ -87,7 +87,7 @@ function Index() {
               <div className="w-10 h-10 bg-primary flex items-center justify-center rounded">
                 <span className="text-2xl">⛏️</span>
               </div>
-              <h1 className="text-2xl font-heading font-bold">CRAFTMINE</h1>
+              <h1 className="text-2xl font-heading font-bold">CLOUDY WORLD</h1>
             </div>
             <div className="hidden md:flex gap-6">
               <button 
@@ -296,7 +296,7 @@ function Index() {
 
       <footer className="border-t border-border mt-16 py-8">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>© 2024 CRAFTMINE. Все права защищены.</p>
+          <p>© 2024 CLOUDY WORLD. Все права защищены.</p>
           <p className="text-sm mt-2">Не является официальным продуктом Mojang</p>
         </div>
       </footer>
