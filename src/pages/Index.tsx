@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +11,36 @@ function Index() {
     isOpen: false,
     privilege: null
   });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const teamSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (activeTab === 'team') {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [activeTab]);
+
+  const calculateRotation = (imgElement: HTMLElement | null) => {
+    if (!imgElement) return { rotateX: 0, rotateY: 0 };
+    
+    const rect = imgElement.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    const deltaX = mousePosition.x - centerX;
+    const deltaY = mousePosition.y - centerY;
+    
+    const maxRotation = 25;
+    const rotateY = (deltaX / window.innerWidth) * maxRotation;
+    const rotateX = -(deltaY / window.innerHeight) * maxRotation;
+    
+    return { rotateX, rotateY };
+  };
 
   const handleBuyClick = (privilege: {name: string, price: string}) => {
     setPurchaseDialog({
@@ -315,12 +345,18 @@ function Index() {
             <div className="grid md:grid-cols-3 gap-6">
               <Card className="hover:border-primary transition-all hover:scale-105">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 relative group perspective-1000">
+                  <div className="mx-auto mb-4 relative group" style={{ perspective: '1000px' }}>
                     <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all"></div>
                     <img 
+                      ref={(el) => {
+                        if (el && activeTab === 'team') {
+                          const { rotateX, rotateY } = calculateRotation(el);
+                          el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                        }
+                      }}
                       src="https://mc-heads.net/avatar/sendeu/100" 
                       alt="sendeu"
-                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-500 group-hover:rotate-y-12 group-hover:rotate-x-6"
+                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-100"
                       style={{ imageRendering: 'pixelated', transformStyle: 'preserve-3d' }}
                     />
                   </div>
@@ -331,12 +367,18 @@ function Index() {
               
               <Card className="hover:border-primary transition-all hover:scale-105">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 relative group perspective-1000">
+                  <div className="mx-auto mb-4 relative group" style={{ perspective: '1000px' }}>
                     <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all"></div>
                     <img 
+                      ref={(el) => {
+                        if (el && activeTab === 'team') {
+                          const { rotateX, rotateY } = calculateRotation(el);
+                          el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                        }
+                      }}
                       src="https://mc-heads.net/avatar/fleymich/100" 
                       alt="fleymich"
-                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-500 group-hover:rotate-y-12 group-hover:rotate-x-6"
+                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-100"
                       style={{ imageRendering: 'pixelated', transformStyle: 'preserve-3d' }}
                     />
                   </div>
@@ -347,12 +389,18 @@ function Index() {
               
               <Card className="hover:border-primary transition-all hover:scale-105">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 relative group perspective-1000">
+                  <div className="mx-auto mb-4 relative group" style={{ perspective: '1000px' }}>
                     <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all"></div>
                     <img 
+                      ref={(el) => {
+                        if (el && activeTab === 'team') {
+                          const { rotateX, rotateY } = calculateRotation(el);
+                          el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                        }
+                      }}
                       src="https://mc-heads.net/avatar/deffix1488/100" 
                       alt="deffix1488"
-                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-500 group-hover:rotate-y-12 group-hover:rotate-x-6"
+                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-100"
                       style={{ imageRendering: 'pixelated', transformStyle: 'preserve-3d' }}
                     />
                   </div>
