@@ -3,14 +3,9 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import PurchaseDialog from '@/components/PurchaseDialog';
 
 function Index() {
   const [activeTab, setActiveTab] = useState('home');
-  const [purchaseDialog, setPurchaseDialog] = useState<{isOpen: boolean, privilege: {name: string, price: string} | null}>({
-    isOpen: false,
-    privilege: null
-  });
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const teamSectionRef = useRef<HTMLDivElement>(null);
 
@@ -394,13 +389,6 @@ function Index() {
             </div>
           </div>
         )}
-
-        <PurchaseDialog
-          isOpen={purchaseDialog.isOpen}
-          onClose={() => setPurchaseDialog({ isOpen: false, privilege: null })}
-          privilege={purchaseDialog.privilege || { name: '', price: '' }}
-          onConfirm={handlePurchaseConfirm}
-        />
 
         {activeTab === 'rules' && (
           <div className="space-y-8 max-w-4xl mx-auto">
