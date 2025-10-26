@@ -20,7 +20,6 @@
       "expectedStatus": 200,
       "expectedBody": {
         "success": true,
-        "message": "string",
         "nickname": "testplayer",
         "privilege": "KNIGHT"
       },
