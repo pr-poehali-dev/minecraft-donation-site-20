@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "Test OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedHeaders": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "name": "Test email forwarding from LeadTex",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "subject": "LeadTex notification",
+        "from": "notify@leadtex.ru",
+        "text": "Test email content"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "forwarded": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test skip non-LeadTex email",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "subject": "Other email",
+        "from": "other@example.com",
+        "text": "Other content"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
