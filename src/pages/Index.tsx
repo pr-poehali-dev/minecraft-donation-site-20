@@ -42,25 +42,8 @@ function Index() {
     return { rotateX, rotateY };
   };
 
-  const handleBuyClick = (privilege: {name: string, price: string}) => {
-    setPurchaseDialog({
-      isOpen: true,
-      privilege
-    });
-  };
-
-  const handlePurchaseConfirm = (nickname: string) => {
-    if (!purchaseDialog.privilege) return;
-    
-    const message = `Привет! Хочу купить привилегию ${purchaseDialog.privilege.name} (${purchaseDialog.privilege.price}) для ника: ${nickname}`;
-    const telegramUrl = `https://t.me/cloy2ru_bot?start=${encodeURIComponent(message)}`;
-    
-    window.open(telegramUrl, '_blank');
-    
-    setPurchaseDialog({
-      isOpen: false,
-      privilege: null
-    });
+  const handleBuyClick = () => {
+    window.open('https://t.me/cloy2ru_bot', '_blank');
   };
 
   const privileges = [
@@ -296,7 +279,7 @@ function Index() {
                     <Button 
                       className="w-full" 
                       size="lg"
-                      onClick={() => handleBuyClick({ name: privilege.name, price: privilege.price })}
+                      onClick={handleBuyClick}
                     >
                       Купить
                     </Button>
