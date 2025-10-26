@@ -280,19 +280,19 @@ function Index() {
               </div>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
               {privileges.map((privilege, index) => (
                 <Card 
                   key={index}
-                  className={`relative hover:scale-105 transition-all ${privilege.popular ? 'border-primary shadow-lg shadow-primary/20' : ''}`}
+                  className={`relative hover:scale-[1.02] transition-all duration-300 ${privilege.popular ? 'border-primary shadow-lg shadow-primary/20 md:col-span-2 lg:col-span-1 lg:row-span-1' : ''}`}
                 >
                   {privilege.popular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <Badge className="bg-primary text-primary-foreground">Популярный</Badge>
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                      <Badge className="bg-primary text-primary-foreground shadow-lg">⭐ Популярный</Badge>
                     </div>
                   )}
                   <CardHeader>
-                    <CardTitle className={`text-3xl font-heading font-black ${privilege.color}`}>
+                    <CardTitle className={`text-3xl font-heading font-black ${privilege.color} drop-shadow-lg`}>
                       {privilege.name}
                     </CardTitle>
                     <CardDescription className="text-4xl font-bold text-foreground mt-2">
@@ -300,18 +300,18 @@ function Index() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2.5">
                       {privilege.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <Icon name="Check" className="text-primary mt-0.5 flex-shrink-0" size={18} />
-                          <span className="text-sm">{feature}</span>
+                          <span className="text-sm leading-relaxed">{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </CardContent>
                   <CardFooter>
                     <Button 
-                      className="w-full" 
+                      className="w-full font-bold" 
                       size="lg"
                       onClick={handleBuyClick}
                     >
