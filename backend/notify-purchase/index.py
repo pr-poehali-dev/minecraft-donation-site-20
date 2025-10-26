@@ -2,10 +2,11 @@ import json
 import os
 import urllib.request
 from typing import Dict, Any
+from mcrcon import MCRcon
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
-    Business: Отправка уведомлений о покупках из LeadTex в Telegram канал
+    Business: Автоматическая обработка покупок из LeadTex: выдача привилегий и уведомления в Telegram
     Args: event - dict с httpMethod, body содержащим данные о покупке
           context - объект с атрибутами request_id, function_name
     Returns: HTTP response dict со статусом отправки
@@ -41,6 +42,21 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     amount: str = body_data.get('amount', body_data.get('price', ''))
     order_id: str = body_data.get('order_id', body_data.get('id', ''))
     
+    rcon_response = ''
+    grant_status = ''
+    
+    rcon_host = os.environ.get('MINECRAFT_RCON_HOST', '')
+    rcon_port = int(os.environ.get('MINECRAFT_RCON_PORT', '25575'))
+    rcon_password = os.environ.get('MINECRAFT_RCON_PASSWORD', '')
+    
+    if rcon_host and rcon_password and nickname != 'Неизвестный' and privilege != 'Неизвестно':
+        try:
+            with MCRcon(rcon_host, rcon_password, rcon_port) as mcr:
+                rcon_response = mcr.command(f'lp user {nickname} parent set {privilege}')
+            grant_status = '✅ Привилегия выдана автоматически'
+        except Exception as e:
+            grant_status = f'⚠️ Ошибка выдачи: {str(e)}'
+    
     bot_token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
     chat_id = os.environ.get('TELEGRAM_CHAT_ID', '')
     
@@ -52,7 +68,11 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             message += f"💰 Сумма: {amount} руб.\n"
         if order_id:
             message += f"📋 Заказ: #{order_id}\n"
-        message += f"\n✅ Спасибо за поддержку сервера!"
+        if grant_status:
+            message += f"\n{grant_status}"
+        if rcon_response:
+            message += f"\n<code>{rcon_response}</code>"
+        message += f"\n\n✅ Спасибо за поддержку сервера!"
         
         try:
             url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
@@ -77,6 +97,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         'body': json.dumps({
             'success': True,
             'nickname': nickname,
-            'privilege': privilege
+            'privilege': privilege,
+            'grant_status': grant_status
         })
     }
