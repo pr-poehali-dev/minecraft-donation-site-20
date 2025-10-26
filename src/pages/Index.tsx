@@ -23,7 +23,7 @@ function Index() {
     if (!purchaseDialog.privilege) return;
     
     const message = `Привет! Хочу купить привилегию ${purchaseDialog.privilege.name} (${purchaseDialog.privilege.price}) для ника: ${nickname}`;
-    const telegramUrl = `https://t.me/cloyru_bot?start=${encodeURIComponent(message)}`;
+    const telegramUrl = `https://t.me/cloy2ru_bot?start=${encodeURIComponent(message)}`;
     
     window.open(telegramUrl, '_blank');
     
