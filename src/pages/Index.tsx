@@ -3,22 +3,34 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import PurchaseDialog from '@/components/PurchaseDialog';
 
 function Index() {
   const [activeTab, setActiveTab] = useState('home');
+  const [purchaseDialog, setPurchaseDialog] = useState<{isOpen: boolean, privilege: {name: string, price: string} | null}>({
+    isOpen: false,
+    privilege: null
+  });
 
-  const handleBuyClick = async (privilege: {name: string, price: string}) => {
-    const nickname = prompt('Введите ваш игровой ник:');
+  const handleBuyClick = (privilege: {name: string, price: string}) => {
+    setPurchaseDialog({
+      isOpen: true,
+      privilege
+    });
+  };
+
+  const handlePurchaseConfirm = (nickname: string) => {
+    if (!purchaseDialog.privilege) return;
     
-    if (!nickname) {
-      alert('Необходимо указать ник!');
-      return;
-    }
-    
-    const message = `Привет! Хочу купить привилегию ${privilege.name} (${privilege.price}) для ника: ${nickname}`;
+    const message = `Привет! Хочу купить привилегию ${purchaseDialog.privilege.name} (${purchaseDialog.privilege.price}) для ника: ${nickname}`;
     const telegramUrl = `https://t.me/cloyru_bot?start=${encodeURIComponent(message)}`;
     
     window.open(telegramUrl, '_blank');
+    
+    setPurchaseDialog({
+      isOpen: false,
+      privilege: null
+    });
   };
 
   const privileges = [
@@ -351,6 +363,13 @@ function Index() {
             </div>
           </div>
         )}
+
+        <PurchaseDialog
+          isOpen={purchaseDialog.isOpen}
+          onClose={() => setPurchaseDialog({ isOpen: false, privilege: null })}
+          privilege={purchaseDialog.privilege || { name: '', price: '' }}
+          onConfirm={handlePurchaseConfirm}
+        />
 
         {activeTab === 'rules' && (
           <div className="space-y-8 max-w-4xl mx-auto">
