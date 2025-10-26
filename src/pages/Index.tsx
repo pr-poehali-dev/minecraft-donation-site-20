@@ -175,7 +175,7 @@ function Index() {
                 onClick={() => setActiveTab('donate')}
                 className={`hover:text-primary transition-colors ${activeTab === 'donate' ? 'text-primary' : 'text-muted-foreground'}`}
               >
-                Привилегии
+                Магазин
               </button>
               <button 
                 onClick={() => setActiveTab('rules')}
@@ -269,7 +269,7 @@ function Index() {
         {activeTab === 'donate' && (
           <div className="space-y-8">
             <div className="text-center space-y-4">
-              <h2 className="text-4xl md:text-5xl font-heading font-black">ПРИВИЛЕГИИ</h2>
+              <h2 className="text-4xl md:text-5xl font-heading font-black">МАГАЗИН</h2>
               <p className="text-muted-foreground text-lg">
                 Поддержи сервер и получи крутые возможности!
               </p>
