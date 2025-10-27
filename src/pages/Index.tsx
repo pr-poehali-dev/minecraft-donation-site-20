@@ -380,7 +380,7 @@ function Index() {
                           el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
                         }
                       }}
-                      src="https://mc-heads.net/avatar/sendeu/100" 
+                      src="https://mc-heads.net/head/sendeu/100" 
                       alt="sendeu"
                       className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-100"
                       style={{ imageRendering: 'pixelated', transformStyle: 'preserve-3d' }}
@@ -402,7 +402,7 @@ function Index() {
                           el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
                         }
                       }}
-                      src="https://mc-heads.net/avatar/fleymich/100" 
+                      src="https://mc-heads.net/head/fleymich/100" 
                       alt="fleymich"
                       className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-100"
                       style={{ imageRendering: 'pixelated', transformStyle: 'preserve-3d' }}
@@ -424,7 +424,7 @@ function Index() {
                           el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
                         }
                       }}
-                      src="https://mc-heads.net/avatar/deffix1488/100" 
+                      src="https://mc-heads.net/head/deffix1488/100" 
                       alt="deffix1488"
                       className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-100"
                       style={{ imageRendering: 'pixelated', transformStyle: 'preserve-3d' }}
