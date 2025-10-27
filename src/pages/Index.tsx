@@ -151,49 +151,49 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+      <nav className="border-b border-primary/20 bg-gradient-to-r from-card/80 via-card/90 to-card/80 backdrop-blur-md sticky top-0 z-50 shadow-lg shadow-primary/5">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-primary flex items-center justify-center rounded">
+            <div className="flex items-center gap-3 group cursor-pointer" onClick={() => setActiveTab('home')}>
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center rounded-xl shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform">
                 <span className="text-2xl">⛏️</span>
               </div>
-              <h1 className="text-2xl font-heading font-bold">CLOUDY WORLD</h1>
+              <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text group-hover:from-primary group-hover:to-blue-400 transition-all">CLOUDY WORLD</h1>
             </div>
-            <div className="hidden md:flex gap-6">
+            <div className="hidden md:flex gap-2">
               <button 
                 onClick={() => setActiveTab('home')}
-                className={`hover:text-primary transition-colors ${activeTab === 'home' ? 'text-primary' : 'text-muted-foreground'}`}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${activeTab === 'home' ? 'bg-gradient-to-r from-primary to-blue-500 text-primary-foreground shadow-lg shadow-primary/30' : 'text-muted-foreground hover:text-primary hover:bg-primary/10'}`}
               >
                 Главная
               </button>
               <button 
                 onClick={() => setActiveTab('donate')}
-                className={`hover:text-primary transition-colors ${activeTab === 'donate' ? 'text-primary' : 'text-muted-foreground'}`}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${activeTab === 'donate' ? 'bg-gradient-to-r from-primary to-blue-500 text-primary-foreground shadow-lg shadow-primary/30' : 'text-muted-foreground hover:text-primary hover:bg-primary/10'}`}
               >
                 Магазин
               </button>
               <button 
                 onClick={() => setActiveTab('rules')}
-                className={`hover:text-primary transition-colors ${activeTab === 'rules' ? 'text-primary' : 'text-muted-foreground'}`}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${activeTab === 'rules' ? 'bg-gradient-to-r from-primary to-blue-500 text-primary-foreground shadow-lg shadow-primary/30' : 'text-muted-foreground hover:text-primary hover:bg-primary/10'}`}
               >
                 Правила
               </button>
               <button 
                 onClick={() => setActiveTab('news')}
-                className={`hover:text-primary transition-colors ${activeTab === 'news' ? 'text-primary' : 'text-muted-foreground'}`}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${activeTab === 'news' ? 'bg-gradient-to-r from-primary to-blue-500 text-primary-foreground shadow-lg shadow-primary/30' : 'text-muted-foreground hover:text-primary hover:bg-primary/10'}`}
               >
                 Новости
               </button>
               <button 
                 onClick={() => setActiveTab('team')}
-                className={`hover:text-primary transition-colors ${activeTab === 'team' ? 'text-primary' : 'text-muted-foreground'}`}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${activeTab === 'team' ? 'bg-gradient-to-r from-primary to-blue-500 text-primary-foreground shadow-lg shadow-primary/30' : 'text-muted-foreground hover:text-primary hover:bg-primary/10'}`}
               >
                 Команда
               </button>
               <button 
                 onClick={() => window.location.href = '/support'}
-                className="hover:text-primary transition-colors text-muted-foreground"
+                className="px-4 py-2 rounded-lg font-medium text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
               >
                 Поддержка
               </button>
@@ -204,6 +204,7 @@ function Index() {
 
       <main className="container mx-auto px-4 py-12">
         {activeTab === 'home' && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="space-y-16">
             <section className="text-center space-y-6 py-12 relative">
               <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent rounded-3xl blur-3xl"></div>
@@ -271,9 +272,11 @@ function Index() {
               </div>
             </section>
           </div>
+          </div>
         )}
 
         {activeTab === 'donate' && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="space-y-8">
             <div className="text-center space-y-4">
               <h2 className="text-4xl md:text-5xl font-heading font-black bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">МАГАЗИН</h2>
@@ -336,9 +339,11 @@ function Index() {
               ))}
             </div>
           </div>
+          </div>
         )}
 
         {activeTab === 'news' && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="space-y-8 max-w-4xl mx-auto">
             <div className="text-center">
               <h2 className="text-4xl md:text-5xl font-heading font-black bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">НОВОСТИ</h2>
@@ -367,9 +372,11 @@ function Index() {
               ))}
             </div>
           </div>
+          </div>
         )}
 
         {activeTab === 'team' && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="space-y-8 max-w-6xl mx-auto">
             <div className="text-center">
               <h2 className="text-4xl md:text-5xl font-heading font-black bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">НАША КОМАНДА</h2>
@@ -447,9 +454,11 @@ function Index() {
               </Card>
             </div>
           </div>
+          </div>
         )}
 
         {activeTab === 'rules' && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="space-y-8 max-w-4xl mx-auto">
             <div className="text-center">
               <h2 className="text-4xl md:text-5xl font-heading font-black bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">ПРАВИЛА</h2>
