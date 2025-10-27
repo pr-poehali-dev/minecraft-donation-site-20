@@ -205,23 +205,28 @@ function Index() {
       <main className="container mx-auto px-4 py-12">
         {activeTab === 'home' && (
           <div className="space-y-16">
-            <section className="text-center space-y-6 py-12">
-              <h2 className="text-5xl md:text-7xl font-heading font-black">
+            <section className="text-center space-y-6 py-12 relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent rounded-3xl blur-3xl"></div>
+              <h2 className="text-5xl md:text-7xl font-heading font-black relative bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent animate-pulse">
                 ДОБРО ПОЖАЛОВАТЬ
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto relative">
                 Лучший Minecraft сервер с уникальными режимами и приятным комьюнити
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-                <div className="flex items-center gap-3 bg-card px-6 py-3 rounded-lg border border-border">
-                  <Icon name="Users" className="text-primary" size={24} />
+                <div className="flex items-center gap-3 bg-gradient-to-br from-card to-card/50 px-6 py-3 rounded-xl border border-primary/30 shadow-lg shadow-primary/10 backdrop-blur-sm hover:shadow-primary/20 transition-all hover:scale-105">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Icon name="Users" className="text-primary" size={24} />
+                  </div>
                   <div className="text-left">
                     <p className="text-sm text-muted-foreground">Онлайн</p>
-                    <p className="text-xl font-bold">1 игрок</p>
+                    <p className="text-xl font-bold text-primary">1 игрок</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 bg-card px-6 py-3 rounded-lg border border-border">
-                  <Icon name="Server" className="text-primary" size={24} />
+                <div className="flex items-center gap-3 bg-gradient-to-br from-card to-card/50 px-6 py-3 rounded-xl border border-primary/30 shadow-lg shadow-primary/10 backdrop-blur-sm hover:shadow-primary/20 transition-all hover:scale-105">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Icon name="Server" className="text-primary" size={24} />
+                  </div>
                   <div className="text-left">
                     <p className="text-sm text-muted-foreground">IP сервера</p>
                     <p className="text-xl font-bold">tcp.cloudpub.ru:47378</p>
@@ -236,31 +241,31 @@ function Index() {
                 <p className="text-muted-foreground">Преимущества нашего сервера</p>
               </div>
               <div className="grid md:grid-cols-3 gap-6">
-                <Card className="hover:border-primary transition-all hover:scale-105">
+                <Card className="hover:border-primary transition-all hover:scale-105 bg-gradient-to-br from-card to-card/50 border-primary/20 shadow-lg shadow-primary/5 group">
                   <CardHeader>
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                      <Icon name="Zap" className="text-primary" size={24} />
+                    <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon name="Zap" className="text-primary" size={28} />
                     </div>
-                    <CardTitle>Без лагов</CardTitle>
-                    <CardDescription>Мощное железо и оптимизация</CardDescription>
+                    <CardTitle className="text-xl">Без лагов</CardTitle>
+                    <CardDescription className="text-base">Мощное железо и оптимизация</CardDescription>
                   </CardHeader>
                 </Card>
-                <Card className="hover:border-primary transition-all hover:scale-105">
+                <Card className="hover:border-primary transition-all hover:scale-105 bg-gradient-to-br from-card to-card/50 border-primary/20 shadow-lg shadow-primary/5 group">
                   <CardHeader>
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                      <Icon name="Shield" className="text-primary" size={24} />
+                    <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon name="Shield" className="text-primary" size={28} />
                     </div>
-                    <CardTitle>Защита</CardTitle>
-                    <CardDescription>Античит и защита от гриферов</CardDescription>
+                    <CardTitle className="text-xl">Защита</CardTitle>
+                    <CardDescription className="text-base">Античит и защита от гриферов</CardDescription>
                   </CardHeader>
                 </Card>
-                <Card className="hover:border-primary transition-all hover:scale-105">
+                <Card className="hover:border-primary transition-all hover:scale-105 bg-gradient-to-br from-card to-card/50 border-primary/20 shadow-lg shadow-primary/5 group">
                   <CardHeader>
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                      <Icon name="Heart" className="text-primary" size={24} />
+                    <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon name="Heart" className="text-primary" size={28} />
                     </div>
-                    <CardTitle>Комьюнити</CardTitle>
-                    <CardDescription>Дружелюбные игроки и адекватная администрация</CardDescription>
+                    <CardTitle className="text-xl">Комьюнити</CardTitle>
+                    <CardDescription className="text-base">Дружелюбные игроки и адекватная администрация</CardDescription>
                   </CardHeader>
                 </Card>
               </div>
