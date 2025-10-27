@@ -196,6 +196,12 @@ function Index() {
               >
                 Команда
               </button>
+              <button 
+                onClick={() => window.location.href = '/support'}
+                className="hover:text-primary transition-colors text-muted-foreground"
+              >
+                Поддержка
+              </button>
             </div>
           </div>
         </div>
