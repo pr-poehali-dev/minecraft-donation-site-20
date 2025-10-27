@@ -222,7 +222,7 @@ function Index() {
                   <Icon name="Users" className="text-primary" size={24} />
                   <div className="text-left">
                     <p className="text-sm text-muted-foreground">Онлайн</p>
-                    <p className="text-xl font-bold">247 игроков</p>
+                    <p className="text-xl font-bold">1 игрок</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 bg-card px-6 py-3 rounded-lg border border-border">
