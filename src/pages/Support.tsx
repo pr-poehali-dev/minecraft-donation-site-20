@@ -138,7 +138,7 @@ function Support() {
             <Icon name="Clock" className="text-primary mx-auto mb-4" size={48} />
             <h3 className="text-xl font-bold mb-2">Время работы поддержки</h3>
             <p className="text-muted-foreground">
-              Мы отвечаем на обращения ежедневно с 10:00 до 23:00 по МСК
+              Мы отвечаем на обращения ежедневно с 10:00 до 21:00 по МСК
             </p>
           </div>
         </div>
