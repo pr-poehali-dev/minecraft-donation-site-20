@@ -341,21 +341,24 @@ function Index() {
         {activeTab === 'news' && (
           <div className="space-y-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-heading font-black">НОВОСТИ</h2>
+              <h2 className="text-4xl md:text-5xl font-heading font-black bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">НОВОСТИ</h2>
               <p className="text-muted-foreground mt-2">Последние обновления сервера</p>
             </div>
             
             <div className="space-y-4">
               {news.map((item, index) => (
-                <Card key={index} className="hover:border-primary transition-all">
+                <Card key={index} className="hover:border-primary transition-all hover:scale-[1.01] bg-gradient-to-br from-card to-card/50 border-primary/20 shadow-lg shadow-primary/5 group">
                   <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="space-y-1">
-                        <CardTitle className="text-xl">{item.title}</CardTitle>
-                        <CardDescription>{item.description}</CardDescription>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="space-y-2 flex-1">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1 h-6 bg-gradient-to-b from-primary to-blue-500 rounded-full"></div>
+                          <CardTitle className="text-xl group-hover:text-primary transition-colors">{item.title}</CardTitle>
+                        </div>
+                        <CardDescription className="text-base">{item.description}</CardDescription>
                       </div>
-                      <Badge variant="outline" className="flex-shrink-0">
-                        <Icon name="Calendar" size={14} className="mr-1" />
+                      <Badge variant="outline" className="flex-shrink-0 border-primary/30 bg-primary/5">
+                        <Icon name="Calendar" size={14} className="mr-1 text-primary" />
                         {item.date}
                       </Badge>
                     </div>
@@ -369,15 +372,15 @@ function Index() {
         {activeTab === 'team' && (
           <div className="space-y-8 max-w-6xl mx-auto">
             <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-heading font-black">НАША КОМАНДА</h2>
+              <h2 className="text-4xl md:text-5xl font-heading font-black bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">НАША КОМАНДА</h2>
               <p className="text-muted-foreground mt-2">Администраторы сервера</p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-6">
-              <Card className="hover:border-primary transition-all hover:scale-105">
+              <Card className="hover:border-primary transition-all hover:scale-105 bg-gradient-to-br from-card to-card/50 border-primary/20 shadow-xl shadow-primary/10 hover:shadow-primary/20">
                 <CardHeader className="text-center">
                   <div className="mx-auto mb-4 relative group" style={{ perspective: '1000px' }}>
-                    <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-blue-500/20 to-primary/30 rounded-xl blur-2xl group-hover:blur-3xl transition-all"></div>
                     <img 
                       ref={(el) => {
                         if (el && activeTab === 'team') {
@@ -387,12 +390,15 @@ function Index() {
                       }}
                       src="https://mc-heads.net/head/sendeu/100" 
                       alt="sendeu"
-                      className="w-24 h-24 rounded-lg border-4 border-primary shadow-lg shadow-primary/50 relative z-10 pixelated transition-transform duration-100"
+                      className="w-28 h-28 rounded-xl border-4 border-primary shadow-2xl shadow-primary/50 relative z-10 pixelated transition-transform duration-100"
                       style={{ imageRendering: 'pixelated', transformStyle: 'preserve-3d' }}
                     />
                   </div>
-                  <CardTitle className="text-2xl font-heading">sendeu</CardTitle>
-                  <CardDescription>Администратор</CardDescription>
+                  <CardTitle className="text-2xl font-heading bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">sendeu</CardTitle>
+                  <CardDescription className="flex items-center justify-center gap-1 mt-2">
+                    <Icon name="Shield" size={16} className="text-primary" />
+                    Администратор
+                  </CardDescription>
                 </CardHeader>
               </Card>
               
@@ -446,19 +452,19 @@ function Index() {
         {activeTab === 'rules' && (
           <div className="space-y-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-heading font-black">ПРАВИЛА</h2>
+              <h2 className="text-4xl md:text-5xl font-heading font-black bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">ПРАВИЛА</h2>
               <p className="text-muted-foreground mt-2">Соблюдай правила и играй с удовольствием</p>
             </div>
             
-            <Card>
+            <Card className="bg-gradient-to-br from-card to-card/50 border-primary/20 shadow-xl shadow-primary/10">
               <CardContent className="pt-6">
-                <ul className="space-y-4">
+                <ul className="space-y-5">
                   {rules.map((rule, index) => (
-                    <li key={index} className="flex items-start gap-3 pb-4 border-b border-border last:border-0 last:pb-0">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary font-bold">{index + 1}</span>
+                    <li key={index} className="flex items-start gap-4 pb-5 border-b border-primary/10 last:border-0 last:pb-0 group hover:bg-primary/5 -mx-4 px-4 py-3 rounded-lg transition-all">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                        <span className="text-primary font-bold text-lg">{index + 1}</span>
                       </div>
-                      <p className="text-foreground pt-1">{rule}</p>
+                      <p className="text-foreground pt-2 leading-relaxed">{rule}</p>
                     </li>
                   ))}
                 </ul>
@@ -468,10 +474,10 @@ function Index() {
         )}
       </main>
 
-      <footer className="border-t border-border mt-16 py-8">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>© 2024 CLOUDY WORLD. Все права защищены.</p>
-          <p className="text-sm mt-2">Не является официальным продуктом Mojang</p>
+      <footer className="border-t border-primary/20 mt-16 py-8 bg-gradient-to-b from-transparent to-card/30">
+        <div className="container mx-auto px-4 text-center text-muted-foreground space-y-2">
+          <p className="font-semibold">© 2024 CLOUDY WORLD. Все права защищены.</p>
+          <p className="text-sm">Не является официальным продуктом Mojang</p>
         </div>
       </footer>
     </div>
