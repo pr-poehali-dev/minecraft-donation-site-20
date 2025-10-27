@@ -63,46 +63,24 @@ function Support() {
             </CardContent>
           </Card>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="hover:border-primary transition-all hover:scale-105">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Icon name="MessageCircle" className="text-primary" size={24} />
-                </div>
-                <CardTitle>Telegram</CardTitle>
-                <CardDescription>Свяжитесь с нами в Telegram для быстрой помощи</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button 
-                  className="w-full" 
-                  onClick={() => window.open('https://t.me/cloudy_support', '_blank')}
-                >
-                  <Icon name="Send" size={16} className="mr-2" />
-                  Написать в Telegram
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:border-primary transition-all hover:scale-105">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Icon name="Users" className="text-primary" size={24} />
-                </div>
-                <CardTitle>Discord</CardTitle>
-                <CardDescription>Присоединяйтесь к нашему Discord сообществу</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button 
-                  className="w-full"
-                  variant="outline"
-                  onClick={() => window.open('https://discord.gg/cloudyworld', '_blank')}
-                >
-                  <Icon name="MessageSquare" size={16} className="mr-2" />
-                  Перейти в Discord
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+          <Card className="hover:border-primary transition-all hover:scale-105 max-w-md mx-auto">
+            <CardHeader>
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <Icon name="MessageCircle" className="text-primary" size={24} />
+              </div>
+              <CardTitle>Telegram</CardTitle>
+              <CardDescription>Свяжитесь с нами в Telegram для быстрой помощи</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button 
+                className="w-full" 
+                onClick={() => window.open('https://t.me/cloudy_support', '_blank')}
+              >
+                <Icon name="Send" size={16} className="mr-2" />
+                Написать в Telegram
+              </Button>
+            </CardContent>
+          </Card>
 
           <Card>
             <CardHeader>
