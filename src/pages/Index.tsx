@@ -276,15 +276,15 @@ function Index() {
         {activeTab === 'donate' && (
           <div className="space-y-8">
             <div className="text-center space-y-4">
-              <h2 className="text-4xl md:text-5xl font-heading font-black">МАГАЗИН</h2>
+              <h2 className="text-4xl md:text-5xl font-heading font-black bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">МАГАЗИН</h2>
               <p className="text-muted-foreground text-lg">
                 Поддержи сервер и получи крутые возможности!
               </p>
-              <div className="bg-card border border-primary/50 rounded-lg p-4 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/50 rounded-xl p-4 max-w-2xl mx-auto shadow-lg shadow-primary/10">
                 <p className="flex items-center justify-center gap-2 text-primary font-semibold">
-                  <Icon name="Sparkles" size={20} />
+                  <Icon name="Sparkles" size={20} className="animate-pulse" />
                   Автоматическая выдача сразу после оплаты
-                  <Icon name="Sparkles" size={20} />
+                  <Icon name="Sparkles" size={20} className="animate-pulse" />
                 </p>
               </div>
             </div>
@@ -293,37 +293,42 @@ function Index() {
               {privileges.map((privilege, index) => (
                 <Card 
                   key={index}
-                  className={`relative hover:scale-[1.02] transition-all duration-300 ${privilege.popular ? 'border-primary shadow-lg shadow-primary/20 md:col-span-2 lg:col-span-1 lg:row-span-1' : ''}`}
+                  className={`relative hover:scale-[1.02] transition-all duration-300 bg-gradient-to-br from-card to-card/50 border-primary/30 shadow-xl shadow-primary/10 hover:shadow-primary/20 group overflow-hidden ${privilege.popular ? 'border-2 border-primary shadow-2xl shadow-primary/30 md:col-span-2 lg:col-span-1 lg:row-span-1' : ''}`}
                 >
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   {privilege.popular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <Badge className="bg-primary text-primary-foreground shadow-lg">⭐ Популярный</Badge>
+                      <Badge className="bg-gradient-to-r from-primary to-blue-500 text-primary-foreground shadow-lg shadow-primary/50 animate-pulse">⭐ Популярный</Badge>
                     </div>
                   )}
-                  <CardHeader>
-                    <CardTitle className={`text-3xl font-heading font-black ${privilege.color} drop-shadow-lg`}>
+                  <CardHeader className="relative z-10">
+                    <CardTitle className={`text-3xl font-heading font-black ${privilege.color} drop-shadow-lg flex items-center gap-2`}>
+                      <div className="w-2 h-8 bg-gradient-to-b from-primary to-blue-500 rounded-full"></div>
                       {privilege.name}
                     </CardTitle>
-                    <CardDescription className="text-4xl font-bold text-foreground mt-2">
+                    <CardDescription className="text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent mt-2">
                       {privilege.price}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2.5">
+                  <CardContent className="relative z-10">
+                    <ul className="space-y-3">
                       {privilege.features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <Icon name="Check" className="text-primary mt-0.5 flex-shrink-0" size={18} />
+                        <li key={i} className="flex items-start gap-3 group/item">
+                          <div className="p-1 bg-primary/10 rounded-md group-hover/item:bg-primary/20 transition-colors">
+                            <Icon name="Check" className="text-primary flex-shrink-0" size={16} />
+                          </div>
                           <span className="text-sm leading-relaxed">{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </CardContent>
-                  <CardFooter>
+                  <CardFooter className="relative z-10">
                     <Button 
-                      className="w-full font-bold" 
+                      className="w-full font-bold bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-500/90 shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all" 
                       size="lg"
                       onClick={handleBuyClick}
                     >
+                      <Icon name="ShoppingCart" size={18} className="mr-2" />
                       Купить
                     </Button>
                   </CardFooter>
